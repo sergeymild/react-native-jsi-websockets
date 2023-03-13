@@ -1,5 +1,7 @@
 package com.websockets;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
@@ -10,7 +12,8 @@ import com.facebook.react.module.annotations.ReactModule;
 
 @ReactModule(name = WebsocketsModule.NAME)
 public class WebsocketsModule extends ReactContextBaseJavaModule {
-  public static final String NAME = "Websockets";
+  public static final String NAME = "JSIWebsockets";
+  private JsiWebsockets jsiWebsockets;
 
   public WebsocketsModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -22,11 +25,16 @@ public class WebsocketsModule extends ReactContextBaseJavaModule {
     return NAME;
   }
 
-
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  @ReactMethod
-  public void multiply(double a, double b, Promise promise) {
-    promise.resolve(a * b);
+  @ReactMethod(isBlockingSynchronousMethod = true)
+  public boolean install() {
+    try {
+      System.loadLibrary("react-native-jsi-websockets");
+      jsiWebsockets = new JsiWebsockets();
+      jsiWebsockets.install(getReactApplicationContext());
+      return true;
+    } catch (Exception exception) {
+      Log.e(NAME, "Failed to install JSI Bindings!", exception);
+      return false;
+    }
   }
 }

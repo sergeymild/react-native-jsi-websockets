@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E555C0D2413F4C50049A1A2 /* Websockets.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Websockets.m */; };
+		92EB9B7D29BF608D00D28945 /* Websockets.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92EB9B7C29BF608D00D28945 /* Websockets.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +24,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libWebsockets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWebsockets.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92ABD52629BF62730036B429 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		92EB9B7C29BF608D00D28945 /* Websockets.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Websockets.mm; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* Websockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Websockets.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* Websockets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Websockets.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +52,8 @@
 			isa = PBXGroup;
 			children = (
 				B3E7B5881CC2AC0600A0062D /* Websockets.h */,
-				B3E7B5891CC2AC0600A0062D /* Websockets.m */,
+				92ABD52629BF62730036B429 /* Macros.h */,
+				92EB9B7C29BF608D00D28945 /* Websockets.mm */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,7 +115,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* Websockets.m in Sources */,
+				92EB9B7D29BF608D00D28945 /* Websockets.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
