@@ -1,6 +1,6 @@
 {
-  "name": "react-native-websockets",
-  "version": "0.1.0",
+  "name": "react-native-jsi-websockets",
+  "version": "1.0.0",
   "description": "test",
   "main": "src/index",
   "module": "src/index",
@@ -38,13 +38,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/sergeymild/react-native-websockets",
+  "repository": "https://github.com/sergeymild/react-native-jsi-websockets",
   "author": "Sergei Golishnikov <sergeymild@yandex.ru> (https://github.com/sergeymild)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sergeymild/react-native-websockets/issues"
+    "url": "https://github.com/sergeymild/react-native-jsi-websockets/issues"
   },
-  "homepage": "https://github.com/sergeymild/react-native-websockets#readme",
+  "homepage": "https://github.com/sergeymild/react-native-jsi-websockets#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

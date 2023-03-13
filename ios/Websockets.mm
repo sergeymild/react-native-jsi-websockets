@@ -123,7 +123,7 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(install) {
 
         [wsTask resume];
     } @catch(id anException) {
-        NSLog(@"-----");
+        [self sendMessageToJs:@"onError" with:@"anException"];
     }
 }
 

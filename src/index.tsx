@@ -19,24 +19,24 @@ const JSIWebsockets = NativeModules.JSIWebsockets
 
 JSIWebsockets.install();
 
-export type JsiIXWebSocketState = 'CONNECTING' | 'OPEN' | 'CLOSING' | 'CLOSED';
-export enum JsiIXWebSocketCallback {
+export type JsiWebSocketState = 'CONNECTING' | 'OPEN' | 'CLOSING' | 'CLOSED';
+export enum JsiWebSocketCallback {
   onOpen = 'onOpen',
   onMessage = 'onMessage',
   onStateChange = 'onStateChange',
   onClose = 'onClose',
   onError = 'onError',
 }
-export type JsiIXWebSocketError = string;
+export type JsiWebSocketError = string;
 
 export type ConnectParams = {
   endpoint: string;
   headers?: Record<string, string>;
 };
 
-type OnErrorCallback = (error: JsiIXWebSocketError) => void;
+type OnErrorCallback = (error: JsiWebSocketError) => void;
 type OnMessageCallback = (message: string) => void;
-type OnStateChangeCallback = (state: JsiIXWebSocketState) => void;
+type OnStateChangeCallback = (state: JsiWebSocketState) => void;
 type OnOpenCallback = () => void;
 type OnCloseCallback = () => void;
 
@@ -44,16 +44,16 @@ declare global {
   var jsiWebSockets: {
     connect: (data: { endpoint: string }) => void;
     close: () => void;
-    state: () => JsiIXWebSocketState;
+    state: () => JsiWebSocketState;
     sendMessage: (message: string) => boolean;
     onOpen: (callback: OnOpenCallback) => void;
     onMessage: (callback: OnMessageCallback) => void;
     onClose: (callback: OnCloseCallback) => void;
     onError: (callback: OnErrorCallback) => void;
-    unsubscribe: (callback: JsiIXWebSocketCallback) => void;
+    unsubscribe: (callback: JsiWebSocketCallback) => void;
 
-    registerCallback: (name: JsiIXWebSocketCallback, callback: any) => void;
-    removeCallback: (name: JsiIXWebSocketCallback) => void;
+    registerCallback: (name: JsiWebSocketCallback, callback: any) => void;
+    removeCallback: (name: JsiWebSocketCallback) => void;
   };
 }
 
@@ -74,7 +74,7 @@ class _ixWebSocket {
     global.jsiWebSockets.close();
   }
 
-  static state(): JsiIXWebSocketState {
+  static state(): JsiWebSocketState {
     return global.jsiWebSockets.state();
   }
 
@@ -84,49 +84,49 @@ class _ixWebSocket {
 
   static onOpen(callback: OnOpenCallback) {
     global.jsiWebSockets.registerCallback(
-      JsiIXWebSocketCallback.onOpen,
+      JsiWebSocketCallback.onOpen,
       callback
     );
   }
 
   static onStateChange(callback: OnStateChangeCallback) {
     global.jsiWebSockets.registerCallback(
-      JsiIXWebSocketCallback.onStateChange,
+      JsiWebSocketCallback.onStateChange,
       callback
     );
   }
 
   static onMessage(callback: OnMessageCallback) {
     global.jsiWebSockets.registerCallback(
-      JsiIXWebSocketCallback.onMessage,
+      JsiWebSocketCallback.onMessage,
       callback
     );
   }
 
   static onClose(callback: OnCloseCallback) {
     global.jsiWebSockets.registerCallback(
-      JsiIXWebSocketCallback.onClose,
+      JsiWebSocketCallback.onClose,
       callback
     );
   }
 
   static onError(callback: OnErrorCallback) {
     global.jsiWebSockets.registerCallback(
-      JsiIXWebSocketCallback.onError,
+      JsiWebSocketCallback.onError,
       callback
     );
   }
 
-  static unsubscribe(callback: JsiIXWebSocketCallback) {
+  static unsubscribe(callback: JsiWebSocketCallback) {
     global.jsiWebSockets.removeCallback(callback);
   }
 
   static unsubscribeAll() {
-    global.jsiWebSockets.removeCallback(JsiIXWebSocketCallback.onOpen);
-    global.jsiWebSockets.removeCallback(JsiIXWebSocketCallback.onMessage);
-    global.jsiWebSockets.removeCallback(JsiIXWebSocketCallback.onClose);
-    global.jsiWebSockets.removeCallback(JsiIXWebSocketCallback.onError);
-    global.jsiWebSockets.removeCallback(JsiIXWebSocketCallback.onStateChange);
+    global.jsiWebSockets.removeCallback(JsiWebSocketCallback.onOpen);
+    global.jsiWebSockets.removeCallback(JsiWebSocketCallback.onMessage);
+    global.jsiWebSockets.removeCallback(JsiWebSocketCallback.onClose);
+    global.jsiWebSockets.removeCallback(JsiWebSocketCallback.onError);
+    global.jsiWebSockets.removeCallback(JsiWebSocketCallback.onStateChange);
   }
 }
 
