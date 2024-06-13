@@ -137,9 +137,9 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(install) {
             if ([message type] == NSURLSessionWebSocketMessageTypeData) {
                 NSString *m = [[NSString alloc] initWithData:[message data] encoding:NSUTF8StringEncoding];
                 [self sendMessageToJs:@"onMessage" with:m];
-                return;
+            } else {
+                [self sendMessageToJs:@"onMessage" with:[message string]];
             }
-            [self sendMessageToJs:@"onMessage" with:[message string]];
         }
         [self startReceiveMessage];
     }];
