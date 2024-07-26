@@ -13,7 +13,7 @@ import com.facebook.react.turbomodule.core.interfaces.CallInvokerHolder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.charset.Charset;
+import java.io.EOFException;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
