@@ -93,11 +93,6 @@ public class JsiWebsockets extends WebSocketListener {
     super.onClosed(webSocket, code, reason);
     state = WsState.CLOSED;
     webSocket = null;
-    if (t instanceof EOFException) {
-      onJavaWsStateChange(state.toString());
-      onJavaWsMessage("onClose", "");
-      return;
-    }
     onJavaWsStateChange(state.toString());
     onJavaWsMessage("onClose", "");
   }
@@ -116,6 +111,11 @@ public class JsiWebsockets extends WebSocketListener {
     super.onFailure(webSocket, t, response);
     state = WsState.CLOSED;
     webSocket = null;
+    if (t instanceof EOFException) {
+      onJavaWsStateChange(state.toString());
+      onJavaWsMessage("onClose", "");
+      return;
+    }
     onJavaWsStateChange(state.toString());
     onJavaWsError(t.getMessage());
   }
